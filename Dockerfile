@@ -1,12 +1,12 @@
 # base image and maintainer
-FROM python:2.7.16-alpine3.10
+FROM python:3.8.1-alpine3.11
 LABEL maintainer="rob@bitniftee.com"
 
 # define args
-ARG GOOGLE_SDK_VERSION=263.0.0
-ARG TERRAFORM_VERSION=0.12.9
-ARG HELM_VERSION="v2.14.3"
-ARG ANSIBLE_VERSION=2.7.12
+ARG GOOGLE_SDK_VERSION=278.0.0
+ARG TERRAFORM_VERSION=0.12.20
+ARG HELM_VERSION="v3.0.3"
+ARG ANSIBLE_VERSION=2.9.4
 ARG APP_USER=googterrahelm
 ARG WORKING_DIRECTORY=/home/${APP_USER}
 
@@ -51,7 +51,7 @@ RUN echo "****** Building Google Cloud: ${GOOGLE_SDK_VERSION}} ******" && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d ${WORKING_DIRECTORY}/bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     echo "****** Building Helm: ${HELM_VERSION} ******" && \
-    wget https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.zip && \
-    unzip helm-${HELM_VERSION}-linux-amd64.zip && \
+    wget https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz && \
+    tar -zxf helm-${HELM_VERSION}-linux-amd64.tar.gz && \
     mv ./linux-amd64/helm ${WORKING_DIRECTORY}/bin/helm && \
     rm -f helm-${HELM_VERSION}-linux-amd64.zip
