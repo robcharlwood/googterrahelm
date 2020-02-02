@@ -1,7 +1,6 @@
 # Googterrahelm
 
-This image is based on the python alpine image (``python:2.7.16-alpine3.9``) and installs the following libraries.
-We are unfortunately locked in to Python 2.7 for the time being as Google Cloud SDK does not support Python 3 yet.
+This image is based on the python alpine image (``python:3.8.1-alpine3.11``) and installs the following libraries.
 
 * Google Cloud SDK (``gcloud``)
 * Kubernetes Control (``kubectl`` - installed as part of ``gcloud``)
